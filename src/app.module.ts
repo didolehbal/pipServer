@@ -7,16 +7,17 @@ import { User } from './users/model/user.entity';
 import { AuthModule } from './auth/auth.module';
 import { CoursModule } from './cours/cours.module';
 import { Cours } from './cours/model/cours.entity';
+import { DocumentsModule } from './documents/documents.module';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       type:"sqlite",
       database:"myDb",
-      entities: [User,Cours],
+      autoLoadEntities:true,
       synchronize: true,
     }), 
-    UsersModule, AuthModule, CoursModule],
+    UsersModule, AuthModule, CoursModule, DocumentsModule],
   controllers: [AppController],
   providers: [AppService],
 })
