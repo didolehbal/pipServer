@@ -4,6 +4,7 @@ import { JwtService } from '@nestjs/jwt';
 import { signUp } from "./dto/types"
 import { User } from 'src/users/model/user.entity';
 import { compareSync,hashSync, genSaltSync } from 'bcrypt';
+import { createUser } from 'src/users/model/user.dto';
 @Injectable()
 export class AuthService {
   constructor(
@@ -40,8 +41,8 @@ export class AuthService {
   }
 
 
-  signup(payload: signUp): Promise<User> {
-    if (payload.password != payload.password_confirmation)
+  signup(payload: createUser): Promise<User> {
+    if (!payload.password || payload.password != payload.password_confirmation)
       throw new HttpException("passwords do not match", HttpStatus.FORBIDDEN)
     const salt = genSaltSync(10);
     return this.usersService.create({...payload,password:hashSync(payload.password,salt)})

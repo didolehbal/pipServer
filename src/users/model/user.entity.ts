@@ -1,16 +1,10 @@
 import { Entity, Column, PrimaryGeneratedColumn, Unique, Timestamp, CreateDateColumn } from 'typeorm';
 
 @Entity()
-@Unique(["username"])
+@Unique(["username", "email"])
 export class User {
   @PrimaryGeneratedColumn()
   id: number;
-
-  @Column({ default: null })
-  subscriptionEnd: Date;
-  
-  @Column({ default: null })
-  subscriptionStarted: Date;
 
   @CreateDateColumn({ type:"date",default: null })
    lastLogin: Date;
@@ -20,6 +14,15 @@ export class User {
 
   @Column()
   password: string;
+
+  @Column()
+  name: string;
+
+  @Column()
+  email: string;
+
+  @Column()
+  filiere: string;
 
   @Column({ default: false })
   isBanned: boolean;

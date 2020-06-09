@@ -2,7 +2,7 @@ import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository, Timestamp } from 'typeorm';
 import { User } from './model/user.entity';
-import { signUp } from 'src/auth/dto/types';
+import { createUser } from './model/user.dto';
 
 @Injectable()
 export class UsersService {
@@ -23,12 +23,14 @@ export class UsersService {
     return this.usersRepository.findOne({ username })
   }
 
-  async create(payload: signUp): Promise<User> {
+  async create(payload: createUser): Promise<User> {
     const user = await this.findByUsername(payload.username)
     if (user)
       throw new HttpException("username already exists", HttpStatus.FORBIDDEN)
     return this.usersRepository.save(payload);
   }
+
+  
   async setLoginTime(userId: number, time: Date) {
     await this.usersRepository.update({ id: userId }, { lastLogin: time })
   }

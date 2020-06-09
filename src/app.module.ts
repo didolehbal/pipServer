@@ -8,6 +8,9 @@ import { AuthModule } from './auth/auth.module';
 import { CoursModule } from './cours/cours.module';
 import { Cours } from './cours/model/cours.entity';
 import { DocumentsModule } from './documents/documents.module';
+import { ScreenshareModule } from './screenshare/screenshare.module';
+import { ScreenshareGateway } from './screenshare/screenshare.gateway';
+import { LinksModule } from './links/links.module';
 
 @Module({
   imports: [
@@ -17,8 +20,8 @@ import { DocumentsModule } from './documents/documents.module';
       autoLoadEntities:true,
       synchronize: true,
     }), 
-    UsersModule, AuthModule, CoursModule, DocumentsModule],
+    UsersModule, AuthModule, CoursModule, DocumentsModule, ScreenshareModule, LinksModule],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, ScreenshareGateway],
 })
 export class AppModule { }

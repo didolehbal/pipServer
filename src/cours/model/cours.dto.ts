@@ -1,10 +1,17 @@
 import {IsNotEmpty} from "class-validator"
 
 export class CreateCours{
+
     @IsNotEmpty()
-    title : string
+    title: string;
+  
     @IsNotEmpty()
-    description:string
+    anneeScolaire : string;
+  
+    picture : string;
+  
+    @IsNotEmpty()
+    filiere : string
 }
 
 

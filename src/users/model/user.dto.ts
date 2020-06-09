@@ -1,11 +1,21 @@
-import { IsNotEmpty, IsDate } from 'class-validator';
+import { IsNotEmpty, IsDate, IsEmail } from 'class-validator';
 
-export class subscriptionDTO {
-    @IsDate()
+export class createUser {
     @IsNotEmpty()
-    start:Date
-    @IsDate()
+    name : string
+    
+    @IsEmail()
     @IsNotEmpty()
-    end:Date
+    email : string
+    
+    @IsNotEmpty()
+    filiere : string
+    @IsNotEmpty()
+    username:string
+    @IsNotEmpty()
+    password: string
+    @IsNotEmpty()
+    password_confirmation : string
+    
 }
 

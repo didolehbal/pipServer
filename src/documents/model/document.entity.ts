@@ -10,6 +10,6 @@ export class Document {
   @Column()
   url: string;
 
-  @ManyToOne(type => Cours, user => user.documents)
+  @ManyToOne(type => Cours, cours => cours.documents)
   cours: Cours;
 }
