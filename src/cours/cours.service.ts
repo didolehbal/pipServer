@@ -3,13 +3,14 @@ import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Cours } from './model/cours.entity';
 import { CreateCours, UpdateCours } from './model/cours.dto';
+import { TypeOrmCrudService } from '@nestjsx/crud-typeorm';
 
 @Injectable()
-export class CoursService {
+export class CoursService extends TypeOrmCrudService<Cours>  {
     constructor(
         @InjectRepository(Cours)
         private coursRepository: Repository<Cours>,
-    ) { }
+    ) {super(coursRepository)}
 
     fetchAll() {
         return this.coursRepository.find()

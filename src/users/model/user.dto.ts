@@ -9,8 +9,6 @@ export class createUser {
     email : string
     
     @IsNotEmpty()
-    filiere : string
-    @IsNotEmpty()
     username:string
     @IsNotEmpty()
     password: string

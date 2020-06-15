@@ -1,4 +1,6 @@
-import { Entity, Column, PrimaryGeneratedColumn, Unique, Timestamp, CreateDateColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, Unique, Timestamp, CreateDateColumn, ManyToMany, ManyToOne } from 'typeorm';
+import { Filiere } from 'src/filiers/model/filier.entity';
+import {Exclude} from "class-transformer"
 
 @Entity()
 @Unique(["username", "email"])
@@ -13,6 +15,7 @@ export class User {
   username: string;
 
   @Column()
+  @Exclude()
   password: string;
 
   @Column()
@@ -21,8 +24,8 @@ export class User {
   @Column()
   email: string;
 
-  @Column()
-  filiere: string;
+  @ManyToOne(type => Filiere, filiere => filiere.etudiants,{eager:true})
+  filiere: Filiere;
 
   @Column({ default: false })
   isBanned: boolean;

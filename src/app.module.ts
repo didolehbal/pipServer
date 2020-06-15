@@ -11,6 +11,7 @@ import { DocumentsModule } from './documents/documents.module';
 import { ScreenshareModule } from './screenshare/screenshare.module';
 import { ScreenshareGateway } from './screenshare/screenshare.gateway';
 import { LinksModule } from './links/links.module';
+import { FiliersModule } from './filiers/filiers.module';
 
 @Module({
   imports: [
@@ -20,7 +21,7 @@ import { LinksModule } from './links/links.module';
       autoLoadEntities:true,
       synchronize: true,
     }), 
-    UsersModule, AuthModule, CoursModule, DocumentsModule, ScreenshareModule, LinksModule],
+    UsersModule, AuthModule, CoursModule, DocumentsModule, ScreenshareModule, LinksModule, FiliersModule],
   controllers: [AppController],
   providers: [AppService, ScreenshareGateway],
 })
