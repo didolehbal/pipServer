@@ -12,9 +12,15 @@ import { ScreenshareModule } from './screenshare/screenshare.module';
 import { ScreenshareGateway } from './screenshare/screenshare.gateway';
 import { LinksModule } from './links/links.module';
 import { FiliersModule } from './filiers/filiers.module';
+import { join } from 'path';
+import { ServeStaticModule } from '@nestjs/serve-static';
 
 @Module({
   imports: [
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'spa'),// here should go the SPA static files for clients
+      
+    }),
     TypeOrmModule.forRoot({
       type:"sqlite",
       database:"myDb",

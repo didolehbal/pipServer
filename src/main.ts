@@ -5,7 +5,6 @@ import { SwaggerModule, DocumentBuilder} from "@nestjs/swagger"
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.enableCors()
-
   const options = new DocumentBuilder()
     .setTitle('Cats example')
     .setDescription('The cats API description')

@@ -3,21 +3,15 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository, Timestamp } from 'typeorm';
 import { User } from './model/user.entity';
 import { createUser } from './model/user.dto';
+import { TypeOrmCrudService } from '@nestjsx/crud-typeorm';
 
 @Injectable()
-export class UsersService {
+export class UsersService extends TypeOrmCrudService<User> {
   constructor(
     @InjectRepository(User)
     private usersRepository: Repository<User>,
-  ) { }
-
-  findAll(): Promise<User[]> {
-    return this.usersRepository.find();
-  }
-
-  findOne(id: number): Promise<User> {
-    return this.usersRepository.findOneOrFail(id);
-  }
+  ) {super(usersRepository) }
+ 
 
   findByUsername(username: string): Promise<User> {
     return this.usersRepository.findOne({ username })
@@ -34,7 +28,5 @@ export class UsersService {
   async setLoginTime(userId: number, time: Date) {
     await this.usersRepository.update({ id: userId }, { lastLogin: time })
   }
-  async remove(id: string): Promise<void> {
-    await this.usersRepository.delete(id);
-  }
+
 }

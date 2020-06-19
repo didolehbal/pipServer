@@ -15,7 +15,7 @@ export class User {
   username: string;
 
   @Column()
-  @Exclude()
+  @Exclude() // exclude password from being sent in responses
   password: string;
 
   @Column()
@@ -24,7 +24,7 @@ export class User {
   @Column()
   email: string;
 
-  @ManyToOne(type => Filiere, filiere => filiere.etudiants,{eager:true})
+  @ManyToOne(type => Filiere, filiere => filiere.etudiants)
   filiere: Filiere;
 
   @Column({ default: false })

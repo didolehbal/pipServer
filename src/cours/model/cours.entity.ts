@@ -1,6 +1,7 @@
-import { Entity, Column, PrimaryGeneratedColumn, Unique, Timestamp, CreateDateColumn, UpdateDateColumn, OneToMany } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, Unique, Timestamp, CreateDateColumn, UpdateDateColumn, OneToMany, ManyToMany } from 'typeorm';
 import {Document} from "../../documents/model/document.entity"
 import { Link } from 'src/links/model/link.entity';
+import { Filiere } from 'src/filiers/model/filier.entity';
 
 @Entity()
 @Unique(["title"])
@@ -17,9 +18,6 @@ export class Cours {
   @Column({default:"defaultpicutre.png"})
   picture : string;
 
-  @Column()
-  filiere : string
-
   @CreateDateColumn()
   createdAt: Date;
 
@@ -31,4 +29,7 @@ export class Cours {
 
   @OneToMany(type => Link, link => link.cours)
   links: Link[];
+
+  @ManyToMany(type => Filiere, filiere => filiere.cours)
+  filiers: Filiere[];
 }

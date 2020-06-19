@@ -4,7 +4,14 @@ import { Link } from './model/link.entity';
 import { LinksService } from './links.service';
 
 @Crud({
-    model:{type:Link}
+    model:{type:Link},
+    query:{
+        join:{
+            cours:{
+                eager:true
+            }
+        }
+    },
 })
 @Controller('links')
 export class LinksController {
