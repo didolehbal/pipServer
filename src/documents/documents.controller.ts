@@ -20,6 +20,9 @@ class createDoc{
         join:{
             cours:{
                 eager:true
+            },
+            task:{
+              eager:true
             }
         }
     },

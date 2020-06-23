@@ -14,6 +14,8 @@ import { LinksModule } from './links/links.module';
 import { FiliersModule } from './filiers/filiers.module';
 import { join } from 'path';
 import { ServeStaticModule } from '@nestjs/serve-static';
+import { TaskModule } from './task/task.module';
+import { SolutionsModule } from './solutions/solution.module';
 
 @Module({
   imports: [
@@ -27,7 +29,7 @@ import { ServeStaticModule } from '@nestjs/serve-static';
       autoLoadEntities:true,
       synchronize: true,
     }), 
-    UsersModule, AuthModule, CoursModule, DocumentsModule, ScreenshareModule, LinksModule, FiliersModule],
+    UsersModule, AuthModule, CoursModule, DocumentsModule, ScreenshareModule, LinksModule, FiliersModule, TaskModule, SolutionsModule],
   controllers: [AppController],
   providers: [AppService, ScreenshareGateway],
 })

@@ -1,6 +1,7 @@
-import { Entity, Column, PrimaryGeneratedColumn, Unique, Timestamp, CreateDateColumn, ManyToMany, ManyToOne } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, Unique, Timestamp, CreateDateColumn, ManyToMany, ManyToOne, OneToMany } from 'typeorm';
 import { Filiere } from 'src/filiers/model/filier.entity';
 import {Exclude} from "class-transformer"
+import { Solution } from 'src/solutions/model/solution.entity';
 
 @Entity()
 @Unique(["username", "email"])
@@ -32,4 +33,7 @@ export class User {
 
   @Column({ default: false })
   isAdmin: boolean;
+
+  @OneToMany(type => Solution, solution => solution.user)
+  solutions : Solution[]
 }

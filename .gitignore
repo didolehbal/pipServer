@@ -13,7 +13,11 @@ lerna-debug.log*
 # OS
 .DS_Store
 
+# sqlite DB
 myDb
+
+#uploads folder
+/uploads
 
 # Tests
 /coverage
