@@ -1,5 +1,5 @@
 import { Controller } from '@nestjs/common';
-import {Crud} from "@nestjsx/crud"
+import {Crud, CrudController} from "@nestjsx/crud"
 import { Link } from './model/link.entity';
 import { LinksService } from './links.service';
 
@@ -14,6 +14,6 @@ import { LinksService } from './links.service';
     },
 })
 @Controller('links')
-export class LinksController {
+export class LinksController implements CrudController<Link> {
     constructor(public service:LinksService){}
 }
