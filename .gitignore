@@ -14,7 +14,6 @@ lerna-debug.log*
 .DS_Store
 
 # sqlite DB
-myDb
 
 #uploads folder
 /uploads

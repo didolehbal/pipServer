@@ -9,7 +9,7 @@ export class User {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @CreateDateColumn({ type:"date",default: null })
+  @CreateDateColumn({ type:"datetime",default: null })
    lastLogin: Date;
 
   @Column()
@@ -25,7 +25,7 @@ export class User {
   @Column()
   email: string;
 
-  @ManyToOne(type => Filiere, filiere => filiere.etudiants)
+  @ManyToOne(type => Filiere, filiere => filiere.etudiants,{eager:true})
   filiere: Filiere;
 
   @Column({ default: false })
