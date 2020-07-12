@@ -7,10 +7,7 @@ export class Solution {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column()
-    title:string
-
-    @Column()
+    @Column({nullable:true})
     note:number
 
     @CreateDateColumn()

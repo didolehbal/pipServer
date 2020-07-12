@@ -12,6 +12,12 @@ import { SolutionsService } from './solution.service';
             },
             user:{
                 eager:true
+            },
+            task:{
+                eager:true
+            },
+            document:{
+                eager:true
             }
         }
     },
