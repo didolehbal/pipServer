@@ -22,11 +22,11 @@ export class User {
   @Column()
   name: string;
 
-  @Column()
-  email: string;
+  @Column({nullable:true})
+  email?: string;
 
   @ManyToOne(type => Filiere, filiere => filiere.etudiants,{eager:true})
-  filiere: Filiere;
+  filiere?: Filiere;
 
   @Column({ default: false })
   isBanned: boolean;

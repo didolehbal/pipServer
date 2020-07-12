@@ -1,4 +1,5 @@
 import { IsNotEmpty, IsDate, IsEmail } from 'class-validator';
+import { Filiere } from 'src/filiers/model/filier.entity';
 
 export class createUser {
     @IsNotEmpty()
@@ -15,5 +16,7 @@ export class createUser {
     @IsNotEmpty()
     password_confirmation : string
     
+    filiere?:Filiere
+
 }
 

@@ -17,11 +17,11 @@ export class UsersService extends TypeOrmCrudService<User> {
     return this.usersRepository.findOne({ username })
   }
 
-  async create(payload: createUser): Promise<User> {
+  async create(payload: createUser) {
     const user = await this.findByUsername(payload.username)
     if (user)
       throw new HttpException("username already exists", HttpStatus.FORBIDDEN)
-    return this.usersRepository.save(payload);
+    return this.usersRepository.save({...payload});
   }
 
   
